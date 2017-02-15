@@ -4,7 +4,7 @@ services:
     image: 'letsbonus/php-dev:7.0'
     container_name: app_fpm
     ports:
-      - "2222:22"
+      - "2223:22"
     volumes_from:
       - code_volume
 

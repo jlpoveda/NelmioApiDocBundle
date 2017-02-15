@@ -224,4 +224,19 @@ class FosRestHandlerTest extends WebTestCase
         $this->assertArrayHasKey('description', $filter);
         $this->assertEquals($filter['description'], 'Param1 description.');
     }
+
+    public function testWithComplexController()
+    {
+        $container  = $this->getContainer();
+        /** @var \Nelmio\ApiDocBundle\Extractor\ApiDocExtractor $extractor */
+        $extractor  = $container->get('nelmio_api_doc.extractor.api_doc_extractor');
+        /** @var \Nelmio\ApiDocBundle\Annotation\ApiDoc $annotation */
+        $annotation = $extractor->get('Nelmio\ApiDocBundle\Tests\Fixtures\Controller\TestController::zActionComplexDataAction', 'test_route_31');
+
+        $requirements = $annotation->getRequirements();
+
+        $this->assertArrayNotHasKey('description', $requirements);
+
+        $this->assertTrue(true);
+    }
 }

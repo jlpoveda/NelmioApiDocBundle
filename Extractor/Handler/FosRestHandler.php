@@ -88,16 +88,9 @@ class FosRestHandler implements HandlerInterface
                         ));
                     }
                 } else {
-                    if (isset($annot->map) && $annot->map) {
-                        $annotation->addFilter($annot->name, array(
-                            'description'   => $annot->description,
-                            'map'           => true
-                        ));
-                    } else {
-                        $annotation->setRequirements(array(
-                            'description'   => $annot->description,
-                        ));
-                    }
+                    $annotation->addFilter($annot->name, array(
+                        'description'   => $annot->description,
+                    ));
                 }
             }
         }

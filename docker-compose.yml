@@ -2,7 +2,7 @@ version: '2'
 services:
   fpm:
     image: 'letsbonus/php-dev:7.0'
-    container_name: app_fpm
+    container_name: nelmioapidocbundle_fpm
     ports:
       - "2223:22"
     volumes_from:

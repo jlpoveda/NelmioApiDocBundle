@@ -657,7 +657,6 @@
                         if ('basic' == authentication_type) {
                             value = 'Basic ' + btoa($('#api_login').val() + ':' + $('#api_pass').val());
                         } else if ('bearer' == authentication_type) {
-                            api_key_parameter = 'Authorization';
                             value = 'Bearer ' + $('#api_key').val();
                         }
                     } else if ('header' == authentication_delivery) {

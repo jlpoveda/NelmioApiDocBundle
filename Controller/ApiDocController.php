@@ -23,7 +23,15 @@ class ApiDocController extends Controller
     public function indexAction($view = ApiDoc::DEFAULT_VIEW)
     {
         $extractedDoc = $this->get('nelmio_api_doc.extractor.api_doc_extractor')->all($view);
-        $htmlContent  = $this->get('nelmio_api_doc.formatter.html_formatter')->format($extractedDoc);
+        $config = $this->container->getParameter('nelmio_api_doc.sandbox.authentication_view');
+        if (isset($config[$view])) {
+            /** @var \Nelmio\ApiDocBundle\Formatter\HtmlFormatter $formatter */
+            $formatter = $this->get('nelmio_api_doc.formatter.html_formatter');
+            $formatter->setAuthentication($config[$view]);
+            $htmlContent  = $formatter->format($extractedDoc);
+        } else {
+            $htmlContent  = $this->get('nelmio_api_doc.formatter.html_formatter')->format($extractedDoc);
+        }
 
         return new Response($htmlContent, 200, array('Content-Type' => 'text/html'));
     }

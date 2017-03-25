@@ -467,6 +467,13 @@
         result_container.show();
     };
 
+    $('.submitbuttonform').click(function(e) {
+        e.preventDefault();
+        var form = $(this).closest("form");
+        form.attr('action', $(this).attr('formaction'));
+        form.submit();
+    });
+
     $('.pane.sandbox form').submit(function() {
         var url = $(this).attr('action'),
             method = $('[name="header_method"]', this).val(),

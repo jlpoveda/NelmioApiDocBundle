@@ -51,6 +51,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('enabled')->defaultTrue()->end()
                         ->scalarNode('endpoint')->defaultNull()->end()
+                        ->scalarNode('mockserver_url')->defaultNull()->end()
                         ->scalarNode('accept_type')->defaultNull()->end()
                         ->arrayNode('body_format')
                             ->addDefaultsIfNotSet()

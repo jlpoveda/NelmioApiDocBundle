@@ -142,6 +142,14 @@ class TestController
 
     /**
      * @ApiDoc()
+     * @QueryParam(name="page", requirements="\d+", description="Page of the overview.")
+     */
+    public function zActionWithQueryParamNoDefaultAction()
+    {
+    }
+
+    /**
+     * @ApiDoc()
      * @QueryParam(name="mail", requirements=@Assert\Email, description="Email of someone.")
      */
     public function zActionWithConstraintAsRequirements()
@@ -412,14 +420,6 @@ class TestController
      * @QueryParam(name="param1", strict=true, description="Param1 description.")
      */
     public function zActionWithRequirementParamNotSet()
-    {
-    }
-
-    /**
-     * @ApiDoc()
-     * @QueryParam(name="page", requirements="\d+", description="Page of the overview.")
-     */
-    public function zActionWithQueryParamNoDefaultAction()
     {
     }
 

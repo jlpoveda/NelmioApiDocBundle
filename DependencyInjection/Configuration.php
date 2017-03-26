@@ -51,6 +51,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('enabled')->defaultTrue()->end()
                         ->scalarNode('endpoint')->defaultNull()->end()
+                        ->scalarNode('mockserver')->defaultNull()->end()
                         ->scalarNode('accept_type')->defaultNull()->end()
                         ->arrayNode('body_format')
                             ->addDefaultsIfNotSet()
@@ -169,6 +170,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
+
     public function addAuthenticationViewNode()
     {
         $builder = new TreeBuilder();
@@ -193,30 +195,30 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->validate()
                     ->ifTrue(function ($v) {
-                        return 'http' === $v['delivery'] && !$v['type'] ;
+                            return 'http' === $v['delivery'] && !$v['type'] ;
                     })
                     ->thenInvalid('"type" is required when using http delivery.')
                 ->end()
                 # http_basic BC
                 ->beforeNormalization()
                     ->ifTrue(function ($v) {
-                        return 'http_basic' === $v['delivery'];
+                            return 'http_basic' === $v['delivery'];
                     })
                     ->then(function ($v) {
-                        $v['delivery'] = 'http';
-                        $v['type'] = 'basic';
+                            $v['delivery'] = 'http';
+                            $v['type'] = 'basic';
 
-                        return $v;
+                            return $v;
                     })
                 ->end()
                 ->beforeNormalization()
                     ->ifTrue(function ($v) {
-                        return 'http' === $v['delivery'];
+                           return 'http' === $v['delivery'];
                     })
                     ->then(function ($v) {
-                        if ('http' === $v['delivery'] && !isset($v['name'])) {
-                            $v['name'] = 'Authorization';
-                        }
+                            if ('http' === $v['delivery'] && !isset($v['name'])) {
+                                    $v['name'] = 'Authorization';
+                                }
 
                         return $v;
                     })
@@ -226,4 +228,5 @@ class Configuration implements ConfigurationInterface
 
         return $node;
     }
+
 }

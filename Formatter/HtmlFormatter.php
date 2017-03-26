@@ -28,6 +28,11 @@ class HtmlFormatter extends AbstractFormatter
     /**
      * @var string
      */
+    protected $mockserver;
+
+    /**
+     * @var string
+     */
     protected $defaultRequestFormat;
 
     /**
@@ -102,6 +107,14 @@ class HtmlFormatter extends AbstractFormatter
     public function setEndpoint($endpoint)
     {
         $this->endpoint = $endpoint;
+    }
+
+    /**
+     * @param string $mockserver
+     */
+    public function setMockserver($mockserver)
+    {
+        $this->mockserver = $mockserver;
     }
 
     /**
@@ -228,6 +241,7 @@ class HtmlFormatter extends AbstractFormatter
             'apiName'               => $this->apiName,
             'authentication'        => $this->authentication,
             'endpoint'              => $this->endpoint,
+            'mockserver'            => $this->mockserver,
             'enableSandbox'         => $this->enableSandbox,
             'requestFormatMethod'   => $this->requestFormatMethod,
             'acceptType'            => $this->acceptType,

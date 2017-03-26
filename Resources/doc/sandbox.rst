@@ -28,6 +28,9 @@ configure this sandbox using the following parameters:
             endpoint: http://sandbox.example.com/   # default is `/app_dev.php`, use this parameter
                                                     # to define which URL to call through the sandbox
 
+            mockserver: http://localhost:3000       # default is null, use this parameter to define
+                                                    # wich URL to call through the sandbox the mockserver
+
             accept_type: application/json           # default is `~` (`null`), if set, the value is
                                                     # automatically populated as the `Accept` header
 
@@ -52,3 +55,16 @@ configure this sandbox using the following parameters:
 
             entity_to_choice: false     # default is `true`, if `false`, entity collection
                                         # will not be mapped as choice
+
+            authentication_view:            # if set, every view can use different authentication method
+
+                viewname:                   # name of the view to apply the authentication config
+
+                    name: Authorization     # access token name or query parameter name or header name
+
+                    delivery: http          # `query`, `http`, and `header` are supported
+
+                    type:     bearer        # `basic`, `bearer` are supported
+
+                    custom_endpoint: false  # default is `false`, if `true`, your user will be able to
+                                            # specify its own endpoint

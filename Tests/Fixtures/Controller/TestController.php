@@ -417,9 +417,49 @@ class TestController
 
     /**
      * @ApiDoc()
-     * @QueryParam(name="param1", description="Param1 description.")
+     * @QueryParam(name="param1", strict=true, description="Param1 description.")
      */
     public function zActionWithRequirementParamNotSet()
+    {
+    }
+
+    /**
+     *
+     * ### Return products catalog, filtered by a url.
+     *
+     *
+     * @ApiDoc(
+     *     resource=false,
+     *     section="Catalog",
+     *     description="Return products catalog, filtered by a url",
+     *     requirements={
+     *      { "name"="_format", "default"="json", "required"=true, "dataType"="string"},
+     *      { "name"="version", "default"="v1", "required"=true, "dataType"="integer", "requirement"="\d+"}
+     *     },
+     *     statusCodes = {
+     *          200 = "Returned when successful",
+     *          404 = "Returned when detail not found",
+     *          500 = "Returned when internal server error"
+     *     }
+     * )
+     *
+     * @QueryParam(name="nodes", map=true, description="Nodes[] to filter")
+     * @QueryParam(name="topPrice", map=false, description="Top price to filter ad fadf asdf asdfa")
+     * @QueryParam(name="botPrice", map=false, description="Bottom price to filter sdfsdf asdf ")
+     * @QueryParam(name="provinces", map=true, description="provinces[] to filter")
+     * @QueryParam(name="cities", map=true, description="cities[] to filter")
+     * @QueryParam(name="merchants", map=true, description="merchants[] to filter")
+     * @QueryParam(name="from", default="1", description="Page Number")
+     * @QueryParam(name="size", default="21", description="Results size")
+     * @QueryParam(name="sortingField", map=true, description="Sorting field names")
+     * @QueryParam(name="sortingOrder", map=true, description="Sorting order of 'sortingField' values, positionally.")
+     * @QueryParam(name="tags", map=true, description="Tags[] to filter")
+     *
+     * @param string $companySlug
+     *
+     * @return array
+     */
+    public function zActionComplexDataAction()
     {
     }
 }

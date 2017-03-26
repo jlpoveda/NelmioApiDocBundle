@@ -56,8 +56,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
         $metadata->addPropertyMetadata($propertyMetadataBar);
         $metadata->addPropertyMetadata($propertyMetadataBaz);
 
-        $propertyNamingStrategy = $this->getMockBuilder('JMS\Serializer\Naming\PropertyNamingStrategyInterface')
-            ->getMock();
+        $propertyNamingStrategy = $this->getMock('JMS\Serializer\Naming\PropertyNamingStrategyInterface');
 
         $propertyNamingStrategy
             ->expects($this->at(0))
@@ -132,7 +131,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
 
     public function testParserWithGroups()
     {
-        $metadataFactory     = $this->getMockBuilder('Metadata\MetadataFactoryInterface')->getMock();
+        $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
         $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
@@ -333,7 +332,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
 
     public function testNestedGroups()
     {
-        $metadataFactory     = $this->getMockBuilder('Metadata\MetadataFactoryInterface')->getMock();
+        $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
         $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
@@ -420,7 +419,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
 
     public function testParserWithVersion()
     {
-        $metadataFactory     = $this->getMockBuilder('Metadata\MetadataFactoryInterface')->getMock();
+        $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
         $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();
@@ -502,7 +501,7 @@ class JmsMetadataParserTest extends \PHPUnit_Framework_TestCase
 
     public function testParserWithInline()
     {
-        $metadataFactory     = $this->getMockBuilder('Metadata\MetadataFactoryInterface')->getMock();
+        $metadataFactory     = $this->getMock('Metadata\MetadataFactoryInterface');
         $docCommentExtractor = $this->getMockBuilder('Nelmio\ApiDocBundle\Util\DocCommentExtractor')
             ->disableOriginalConstructor()
             ->getMock();

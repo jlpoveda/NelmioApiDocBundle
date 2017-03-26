@@ -635,11 +635,3 @@ form .request-content {
     color: #660;
     cursor: pointer;
 }
-
-.duplicate {
-  display: none;
-}
-
-.tuple button.max {
-  display: inline;
-}

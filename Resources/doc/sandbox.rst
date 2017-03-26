@@ -28,7 +28,7 @@ configure this sandbox using the following parameters:
             endpoint: http://sandbox.example.com/   # default is `/app_dev.php`, use this parameter
                                                     # to define which URL to call through the sandbox
 
-            mockserver_url: http://localhost:3000   # default is null, use this parameter to define
+            mockserver: http://localhost:3000       # default is null, use this parameter to define
                                                     # wich URL to call through the sandbox the mockserver
 
             accept_type: application/json           # default is `~` (`null`), if set, the value is
